@@ -1,0 +1,28 @@
+// Variables
+// Colors
+$color-blue-900 : #0D2C6C;
+$color-blue-700 : #004A80;
+$color-blue-500 : #0F75BB;
+$color-blue-400 : #D4EFFC;
+$color-blue-300 : #F2F7FF;
+
+$color-gray-300 : #DEE1E2;
+$color-gray-700 : #808284;
+$color-gray-900 : #58595B;
+
+$color-red      : #CD163F;
+$color-white    : #fff;
+$color-black    :#000;
+
+
+// Media Queries
+$mobile: 688px; // 43em
+$tablet: 992px; // 62em
+$desktop: 1300px; // 82em
+
+
+@media (min-width: $tablet){
+  body { display: flex; }  
+  main { flex: 1 0 75%; }
+  aside { flex: 1 0 25%; }  
+}

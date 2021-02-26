@@ -1,0 +1,47 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+@font-face {
+  font-family: nhg-b;
+  src: url("fonts/NeueHaasGroteskDisp-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: nhg-l;
+  src: url("fonts/NeueHaasGroteskDisp-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: nhg-m;
+  src: url("fonts/NeueHaasGroteskDisp-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: nhg-r;
+  src: url("fonts/NeueHaasGroteskDisp-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: nhg-rt;
+  src: url("fonts/NeueHaasGroteskText-Regular.otf") format("opentype");
+}
+
+$font-lora: 'Lora', serif;
+$font-nhg-b: 'nhg-b';
+$font-nhg-l: 'nhg-l';
+$font-nhg-m: 'nhg-m';
+$font-nhg-r: 'nhg-r';
+$font-nhg-rt: 'nhg-rt';
+
+
+body {
+  font-family: $font-nhg-r;
+  font-size: 20px;
+}
+
+h1, h2, h3, h4{
+  font-family: $font-lora;
+}
+h5, h6, p{
+  font-family: $font-nhg-b;
+}
