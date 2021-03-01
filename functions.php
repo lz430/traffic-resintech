@@ -14,6 +14,13 @@ if ( !function_exists( 'chld_thm_cfg_locale_css' ) ):
 endif;
 add_filter( 'locale_stylesheet_uri', 'chld_thm_cfg_locale_css' );
 
+function child_scripts_styles() {
+    wp_enqueue_style('lz-css', get_stylesheet_directory_uri().'/css/style.css', filemtime(get_stylesheet_directory() . '/css/style.css'), null);
+    wp_enqueue_script('lz-js', get_stylesheet_directory_uri().'/js/custom.js', filemtime(get_stylesheet_directory() . '/js/custom.js'), null);
+}
+add_action( 'wp_enqueue_scripts', 'child_scripts_styles', 10 );
+
+
 if ( !function_exists( 'chld_thm_cfg_parent_css' ) ):
     function chld_thm_cfg_parent_css() {
         wp_enqueue_style( 'chld_thm_cfg_parent', trailingslashit( get_template_directory_uri() ) . 'style.css', array(  ) );
@@ -28,7 +35,7 @@ function wpdocs_custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 function child_add_woocommerce_support() {
-add_theme_support( 'woocommerce' );
+    add_theme_support( 'woocommerce' );
 }
 add_action( 'after_setup_theme', 'child_add_woocommerce_support' );
 
@@ -1313,3 +1320,58 @@ function pdp_change_script() {
 <?php
 }
 add_action( 'wp_footer', 'pdp_change_script' );
+
+
+// Woocommerce ajax cart shortcode
+add_shortcode ('woo_cart_but', 'woo_cart_but' );
+/**
+ * Create Shortcode for WooCommerce Cart Menu Item
+ */
+function woo_cart_but() {
+    ob_start();
+
+    $cart_count = WC()->cart->cart_contents_count; // Set variable for cart item count
+    $cart_url = wc_get_cart_url();  // Set Cart URL
+
+    ?>
+    <li><a class="menu-item cart-contents" href="<?php echo $cart_url; ?>" title="My Basket">
+    <?php
+    if ( $cart_count > 0 ) {
+    ?>
+        <span class="cart-contents-count"><?php echo $cart_count; ?></span>
+    <?php
+    }
+    ?>
+    </a></li>
+    <?php
+        
+    return ob_get_clean();
+
+}
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'woo_cart_but_count' );
+/**
+ * Add AJAX Shortcode when cart contents update
+ */
+function woo_cart_but_count( $fragments ) {
+ 
+    ob_start();
+    
+    $cart_count = WC()->cart->cart_contents_count;
+    $cart_url = wc_get_cart_url();
+    
+    ?>
+    <a class="cart-contents menu-item" href="<?php echo $cart_url; ?>" title="<?php _e( 'View your shopping cart' ); ?>">
+    <?php
+    if ( $cart_count > 0 ) {
+        ?>
+        <span class="cart-contents-count"><?php echo $cart_count; ?></span>
+        <?php            
+    }
+        ?></a>
+    <?php
+ 
+    $fragments['a.cart-contents'] = ob_get_clean();
+     
+    return $fragments;
+}

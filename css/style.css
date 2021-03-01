@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 @font-face {
   font-family: nhg-b;
@@ -32,18 +33,89 @@ h5, h6, p {
   font-family: "nhg-b";
 }
 
-@media (min-width: 992px) {
-  body {
-    display: flex;
-  }
-
-  main {
-    flex: 1 0 75%;
-  }
-
-  aside {
-    flex: 1 0 25%;
-  }
+header {
+  transition: 0.4s all ease;
+  z-index: 99999;
+  /* # WooCommerce Cart Icon CSS with FontAwesome 5
+    https://wpbeaches.com/add-woocommerce-cart-icon-to-menu-with-cart-item-count/
+  ---------------------------------------------------------------------------------------------------- */
+}
+header.no-scroll {
+  margin: 20px auto;
+}
+header.scrolled {
+  margin: 0;
+  width: 100%;
+}
+header .bg-blue-200 {
+  background: #F2F6FF;
+}
+header .bg-white {
+  background: #fff;
+  padding: 20px;
+}
+header .custom-search {
+  margin-left: 0;
+  width: auto;
+  padding: 20px;
+}
+header .custom-search .is-form-style input.is-search-submit,
+header .custom-search .is-search-icon {
+  background: transparent;
+  border: 0 none;
+  color: #0D2C6C;
+}
+header .custom-search .is-form-style input.is-search-submit svg,
+header .custom-search .is-search-icon svg {
+  width: 30px;
+}
+header .custom-search .is-search-input {
+  background: transparent;
+  border: 0 none !important;
+  color: #000 !important;
+  font-family: "Lora", serif;
+  font-size: 1.5em !important;
+}
+header .cart {
+  list-style-type: none;
+}
+header .cart li {
+  margin: 0;
+  padding: 0;
+}
+header .cart .cart-contents {
+  position: relative;
+  display: flex !important;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+header .cart .cart-contents:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "" !important;
+  font-size: 15px;
+  color: #213760;
+}
+header .cart .cart-contents:hover {
+  text-decoration: none;
+}
+header .cart .cart-contents-count {
+  position: absolute;
+  top: 15px;
+  right: 1px;
+  transform: translateY(-105%) translateX(25%);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 22px;
+  height: 22px;
+  width: 22px;
+  vertical-align: middle;
+  text-align: center;
+  color: #fff;
+  background: #c01c3f;
+  border-radius: 50%;
+  padding: 1px;
 }
 
 /*# sourceMappingURL=style.css.map */

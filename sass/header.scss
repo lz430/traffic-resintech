@@ -1,0 +1,96 @@
+header {
+  transition: .4s all ease;
+  z-index: 99999;
+
+  &.no-scroll {
+    margin: 20px auto;
+  }
+  &.scrolled {
+    margin: 0;
+    width: 100%;
+  }
+
+  .bg-blue-200 {
+    background: $blue-200; 
+  } 
+  .bg-white {
+    background: $white;
+    padding: 20px; 
+  }
+
+  .custom-search {
+    margin-left: 0;
+    width: auto;
+    padding: 20px;
+
+    // form
+    .is-form-style input.is-search-submit, 
+    .is-search-icon{
+      background: transparent;
+      border: 0 none;
+      color: #0D2C6C;
+
+      svg {
+        width: 30px;
+      }
+    }
+
+    .is-search-input {
+      background: transparent; 
+      border: 0 none !important;
+      color: $black !important;
+      font-family: $font-lora;
+      font-size: 1.5em !important;
+    }
+  }
+
+  // Cart icon
+  /* # WooCommerce Cart Icon CSS with FontAwesome 5
+  https://wpbeaches.com/add-woocommerce-cart-icon-to-menu-with-cart-item-count/
+---------------------------------------------------------------------------------------------------- */
+  .cart {
+    list-style-type: none; 
+    li{
+      margin: 0;
+      padding: 0;
+    }
+
+    .cart-contents {
+      position: relative;
+      display: flex !important;
+      flex-flow: column nowrap;
+      justify-content: center;
+    }
+
+    .cart-contents:before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900; 
+      content: "\f07a" !important;
+      font-size: 15px;
+      color: #213760;
+    }
+
+    .cart-contents:hover {
+      text-decoration: none;
+    }
+
+    .cart-contents-count {
+      position: absolute;
+      top: 15px;
+      right: 1px;
+      transform: translateY(-105%) translateX(25%);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 22px;
+      height: 22px;
+      width: 22px;
+      vertical-align: middle;
+      text-align: center;
+      color: #fff;
+      background: #c01c3f;
+      border-radius: 50%;
+      padding: 1px;  
+    }
+  }
+}
