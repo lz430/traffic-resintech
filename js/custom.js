@@ -6,3 +6,14 @@ jQuery(window).scroll(function (event) {
     jQuery('header').removeClass('scrolled').addClass('no-scroll');
   }
 });
+
+jQuery(document).ready(function() {
+  jQuery('.open-menu').on('click', function() {
+     jQuery('.overlay').addClass('open');
+  });
+ 
+  jQuery('.close-menu').on('click', function() {
+    jQuery('.overlay').removeClass('open');
+  });
+
+});

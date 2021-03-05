@@ -33,19 +33,93 @@ h5, h6, p {
   font-family: "nhg-b";
 }
 
+@keyframes header-scrolled {
+  0% {
+    top: 20px;
+    width: 97%;
+  }
+  25% {
+    top: 10px;
+    width: 98.5%;
+  }
+  50% {
+    top: 15px;
+    width: 99.5%;
+  }
+  100% {
+    top: 0;
+    width: 100%;
+  }
+}
+@keyframes header-no-scroll {
+  0% {
+    top: 0;
+    width: 100%;
+  }
+  100% {
+    top: 20px;
+    width: 97%;
+  }
+}
+@keyframes line-slide {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 4%;
+  }
+  0% {
+    left: 0;
+  }
+}
+a.line-slide {
+  position: relative;
+}
+a.line-slide::before {
+  background: #CD163F;
+  content: "";
+  position: absolute;
+  height: 1px;
+  opacity: 1;
+  width: 60px;
+  margin-top: 30px;
+  left: -3%;
+  top: -10px;
+}
+a.line-slide:hover::after {
+  background: #fff;
+  content: "";
+  position: absolute;
+  height: 1px;
+  opacity: 1;
+  width: 60px;
+  margin-top: 30px;
+  right: -6%;
+  top: -10px;
+  animation: line-slide 0.4s linear 0s 1 normal;
+}
+
 header {
-  transition: 0.4s all ease;
   z-index: 99999;
+  transition: all 0.4s;
+  right: 0;
+  left: 0;
+  top: 20px;
+  margin: 0 auto;
+  width: 97% !important;
   /* # WooCommerce Cart Icon CSS with FontAwesome 5
     https://wpbeaches.com/add-woocommerce-cart-icon-to-menu-with-cart-item-count/
   ---------------------------------------------------------------------------------------------------- */
 }
-header.no-scroll {
-  margin: 20px auto;
-}
 header.scrolled {
   margin: 0;
-  width: 100%;
+  top: 0;
+  width: 100% !important;
+}
+@media screen and (max-width: 768px) {
+  header .custom-logo {
+    max-width: none;
+  }
 }
 header .bg-blue-200 {
   background: #F2F6FF;
@@ -54,22 +128,31 @@ header .bg-white {
   background: #fff;
   padding: 20px;
 }
-header .custom-search {
+header .search {
+  flex-grow: 1;
+}
+header .search .custom-search {
   margin-left: 0;
   width: auto;
   padding: 20px;
 }
-header .custom-search .is-form-style input.is-search-submit,
-header .custom-search .is-search-icon {
+header .search .custom-search .is-form-style input.is-search-submit,
+header .search .custom-search .is-search-icon {
   background: transparent;
   border: 0 none;
   color: #0D2C6C;
 }
-header .custom-search .is-form-style input.is-search-submit svg,
-header .custom-search .is-search-icon svg {
+@media screen and (max-width: 768px) {
+  header .search .custom-search .is-form-style input.is-search-submit,
+header .search .custom-search .is-search-icon {
+    display: none !important;
+  }
+}
+header .search .custom-search .is-form-style input.is-search-submit svg,
+header .search .custom-search .is-search-icon svg {
   width: 30px;
 }
-header .custom-search .is-search-input {
+header .search .custom-search .is-search-input {
   background: transparent;
   border: 0 none !important;
   color: #000 !important;
@@ -78,6 +161,7 @@ header .custom-search .is-search-input {
 }
 header .cart {
   list-style-type: none;
+  flex-grow: 0;
 }
 header .cart li {
   margin: 0;
@@ -116,6 +200,148 @@ header .cart .cart-contents-count {
   background: #c01c3f;
   border-radius: 50%;
   padding: 1px;
+}
+header .lang {
+  padding-left: 0;
+  max-width: 100px;
+  flex-grow: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .astm-search-menu-wrapper {
+    margin-top: 0 !important;
+    z-index: 99999999;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s, height 0.5s;
+  overflow: hidden;
+}
+.overlay.open {
+  background: #f9fafe;
+  opacity: 1;
+  visibility: visible;
+  height: 100%;
+  transition: opacity 0.5s, visibility 0.5s, height 0.5s;
+  z-index: 9999999;
+}
+.overlay .overlay-menu {
+  padding: 40px 0;
+}
+.overlay .overlay-menu .col-9 {
+  margin-left: 2px;
+}
+.overlay .overlay-menu .peak {
+  background: #fff;
+  padding: 20px 0;
+  width: 275px;
+}
+.overlay .overlay-menu .peak .menu-main-container {
+  background: #fff;
+}
+.overlay .overlay-menu .peak #menu-main {
+  list-style: none;
+  position: relative;
+}
+.overlay .overlay-menu .peak #menu-main li {
+  margin: 3em 3em;
+  list-style: none;
+}
+.overlay .overlay-menu .peak #menu-main li.open .sub-menu {
+  position: absolute;
+  left: 100%;
+  margin: 0;
+  top: 0;
+  width: 100%;
+  border-right: 1px solid #d1d1d1;
+  border-left: 0px solid #d1d1d1;
+  height: 100%;
+}
+.overlay .overlay-menu .peak #menu-main li.open a:not(:last-child):after {
+  content: "";
+  font-family: FontAwesome;
+  font-weight: 300;
+  font-style: normal;
+  margin: 0px 0px 0px 10px;
+  text-decoration: none;
+}
+.overlay .overlay-menu .peak #menu-main li a {
+  font-family: "Lora", serif;
+  font-size: 2em;
+}
+.overlay .overlay-menu .peak #menu-main li a:not(:last-child):after {
+  content: "";
+  font-family: FontAwesome;
+  font-weight: 300;
+  font-style: normal;
+  margin: 0px 0px 0px 10px;
+  text-decoration: none;
+}
+
+.home .carousel-item {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+}
+.home .carousel-item .d-flex {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8%;
+  width: 100%;
+}
+.home .carousel-item .d-flex h1 {
+  color: #fff;
+  font-family: "Lora", serif;
+  font-size: 4.3em;
+  width: 100%;
+}
+.home .carousel-item .d-flex h3 {
+  color: #fff;
+  font-family: "nhg-r";
+  font-size: 3.2em;
+  width: 100%;
+}
+.home .carousel-item .d-flex a {
+  color: #fff;
+  display: block;
+  font-family: "Lora", serif;
+  font-size: 2.5em;
+  margin-top: 2em;
+  text-align: left;
+  width: 100%;
+}
+.home .carousel .carousel-control-container {
+  justify-content: space-between;
+  position: absolute;
+  bottom: 12%;
+  right: 12%;
+  width: 160px;
+}
+.home .carousel .carousel-control-container .carousel-control-next,
+.home .carousel .carousel-control-container .carousel-control-prev {
+  background: #808284;
+  border-radius: 100px;
+  color: #000;
+  height: 60px;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+  top: 0;
+  width: 60px;
+}
+.home .carousel .carousel-control-container .carousel-control-next:hover,
+.home .carousel .carousel-control-container .carousel-control-prev:hover {
+  background: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

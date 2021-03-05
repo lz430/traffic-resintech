@@ -1,11 +1,13 @@
 <?php /*Template Name: Homepage*/ ?>
 <?php get_header(); ?>
-<?php the_content(); 
-$our_story_section = get_field('our_story_section', get_the_ID());
-$service_section_heading = get_field('service_section_heading', get_the_ID());
-$news_section = get_field('news_section', get_the_ID());
-$section_before_footer = get_field('section_before_footer', get_the_ID());
+<?php 
+    //the_content(); 
+    $our_story_section = get_field('our_story_section', get_the_ID());
+    $service_section_heading = get_field('service_section_heading', get_the_ID());
+    $news_section = get_field('news_section', get_the_ID());
+    $section_before_footer = get_field('section_before_footer', get_the_ID());
 ?>
+
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
         <?php
@@ -15,6 +17,69 @@ $section_before_footer = get_field('section_before_footer', get_the_ID());
         //                 // Include the page content template.
         //                 get_template_part( 'template-parts/content', 'page' );
         ?>
+
+        <section class="company-section min-vh-100">
+           <div id="carouselExampleFade" class="carousel slide carousel-fade min-vh-100" data-ride="carousel">
+             <div class="carousel-inner min-vh-100">
+                <?php 
+                    if( have_rows('home_slider') ):
+                        $i = 1; 
+                        ?>                        
+                        <div id="carousel-home" class="min-vh-100 carousel slide" data-ride="carousel">
+                            <div class="carousel-inner min-vh-100">';
+                        
+                                <?php
+                                while ( have_rows('home_slider') ) : the_row();
+                                    $background_image = get_sub_field('background_image');
+                                    $headline = get_sub_field('headline');
+                                    $subheading = get_sub_field('subheading');
+                                    $link_text = get_sub_field('link_text');
+                                    $link_url = get_sub_field('link_url');
+                                ?>
+                                
+                                 <div class="carousel-item d-flex min-vh-100 <?php if($i == 1) echo 'active';?>" style="background-image: url('<?php echo $background_image; ?>')">
+                                    <div class="d-flex">
+                                        <h1><?php echo $headline; ?></h1>
+                                        <h3><?php echo $subheading; ?></h3> 
+                                        <a class="line-slide" href="<?php echo $link_url; ?>"><?php echo $link_text; ?></a>
+                                    </div>
+                                </div>
+                                              
+                                <?php   $i++; // Increment the increment variable
+                                    endwhile; 
+                                ?>
+                                
+                            </div>
+                            <div class="carousel-control-container d-flex">
+                                 <a class="carousel-control-prev" href="#carousel-home" role="button" data-slide="prev">
+                                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.106 14.811C7.232 14.937 7.379 15 7.526 15C7.694 15 7.862 14.937 7.967 14.811C8.177 14.58 8.177 14.223 7.967 13.992L1.709 7.692L7.967 1.413C8.177 1.161 8.177 0.782999 7.967 0.531C7.736 0.299999 7.337 0.320999 7.106 0.531L0.47 7.251L0.449 7.272L0.386 7.335C0.365 7.356 0.344 7.398 0.323 7.44C0.302 7.503 0.281 7.545 0.281 7.587C0.26 7.65 0.26 7.713 0.281 7.776C0.281 7.818 0.281 7.839 0.302 7.881C0.302 7.902 0.302 7.923 0.323 7.944C0.323 7.944 0.323 7.965 0.344 7.986C0.365 8.028 0.407 8.07 0.449 8.112L0.47 8.133L7.106 14.811Z" fill="black"/>
+                                    </svg>
+                                    <span class="sr-only">Previous</span>
+                                  </a>
+                                  <a class="carousel-control-next" href="#carousel-home" role="button" data-slide="next">
+                                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.079 14.811C1.205 14.937 1.352 15 1.52 15C1.667 15 1.835 14.937 1.94 14.811L8.576 8.133L8.597 8.112C8.618 8.091 8.639 8.091 8.639 8.07C8.723 7.965 8.765 7.818 8.765 7.692C8.765 7.545 8.702 7.377 8.597 7.272L8.576 7.251L1.94 0.531C1.709 0.320999 1.31 0.299999 1.079 0.531C0.869 0.782999 0.869 1.161 1.079 1.413L7.337 7.692L1.079 13.992C0.869 14.223 0.869 14.58 1.079 14.811Z" fill="black"/>
+                                    </svg>
+                                    <span class="sr-only">Next</span>
+                                  </a>
+                            </div> 
+                        </div>
+
+                    <?php 
+                        else :
+                    endif;
+                ?>
+             </div>
+           </div>
+        </section>
+
+
+
+
+
+
+
         <!-- Company Section start here-->
         <section class="company-section">
             <div class="row">
@@ -37,32 +102,28 @@ $section_before_footer = get_field('section_before_footer', get_the_ID());
                         <?php echo $our_story_section['caption'];?>
                     </span>
                     <h5>
-                    <?php echo $our_story_section['heading'];?>
+                        <?php echo $our_story_section['heading'];?>
                     </h5>
-                    <?php echo $our_story_section['details'];?>
-                    <!-- <p>
-                        Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-                        nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus
-                        posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget
-                        lacinia odio sem nec elit.
-                    </p> -->
+                        <?php echo $our_story_section['details'];?>
+                   
                     <div class="line">
                         <h6>
-                        <a href="<?php echo $our_story_section['link']['url'];?>"><?php echo $our_story_section['link']['title'];?></a>
+                            <a href="<?php echo $our_story_section['link']['url'];?>"><?php echo $our_story_section['link']['title'];?></a>
                         </h6>
                     </div>
                     
                     
                 </div>
             </div>
-        </section>
+        </section> 
         <!-- Company Section end here-->
         <!-- <div class="test">hi tesetr</div>
         <h2>Scroll down</h2>
         <h1>This will jump</h1> -->
         <!-- Services Section start here-->
-        <section class="services">
+
+
+       <!--  <section class="services ">
             <div class="container">
                 <p class="text-space">Services</p>
                 <h2>
@@ -100,21 +161,11 @@ $section_before_footer = get_field('section_before_footer', get_the_ID());
                                     endwhile;
                                     wp_reset_postdata();
                     ?>
-                    <!-- <div class="col-md-4">
-                        <img src="/wp-content/uploads/2020/12/Rectangle-99-1.png">
-                        <h5>Resin Regeneration</h5>
-                        <P>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet
-                        fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</P>
-                    </div>
-                    <div class="col-md-4">
-                        <img src="/wp-content/uploads/2020/12/Rectangle-99-2.png">
-                        <h5>RO Membrane Restoration</h5>
-                        <P>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet
-                        fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</P>
-                    </div> -->
                 </div>
             </div>
-        </section>
+        </section> -->
+
+
         <!-- Services Section end here-->
         <!-- Services Duplicate Section start here-->
         <!-- <section class="services">

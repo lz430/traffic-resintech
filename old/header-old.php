@@ -18,8 +18,6 @@
             <?php
               wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'my_extra_menu_class' ) );           
             ?>
-            
-              
           </ul>
          <div class="product-text">
             <hr>
@@ -303,3 +301,131 @@
         <div class="clear">
             
         </div>
+
+
+
+        <!-----------------------Mobile Header start here------------->
+    <div class="mb-header">
+      <div class="custom-header container-fluid">
+  <div class="header-titles">
+    <div id="custom-menu"> 
+          <i class="fa fa-bars open" id="open" aria-hidden="true"></i>
+        <i class="fas fa-times" id="close"></i>
+        <div class="container-fluid nav-menu show" id="nav">
+      
+            <div class="col-3 peak">
+        <img src="/wp-content/uploads/2020/12/image-26.png">
+            <ul id="first">
+                <li id="home_drop">
+          Products<i class="fas fa-angle-right" id="istangle"></i></li> 
+                <li id="second_drop">Services <i class="fas fa-angle-right"></i></li>
+                <li id="third_drop">Applications <i class="fas fa-angle-right"></i></li>
+                <li id="fourth_drop">Resources <i class="fas fa-angle-right"></i></li>
+                <li id="fifth_drop">Support <i class="fas fa-angle-right"></i></li>
+        <li id="sixth_drop">Comapany <i class="fas fa-angle-right"></i></li>
+        
+            </ul>
+        
+            </div>
+            <div id="home_dropdown" class="drop_down">
+        <p>
+          All Products
+        </p>
+                <li id="first_product">Ion Exchange Resins <i class="fas fa-angle-right" id="productoneangle"></i></li>
+                <li  id="second_product">Granular Activated Carbon <i class="fas fa-angle-right" id="producttwoangle"></i></li>
+                <li  id="third_product"> Specialty Media <i class="fas fa-angle-right" id="productthirdangle"></i></li>
+          <li  id="fourth_product"> Specialty Media <i class="fas fa-angle-right" id="productfourthangle"></i></li>
+        <li  id="fifth_product"> Specialty Media <i class="fas fa-angle-right" id="productfifthangle"></i></li>
+        <li  id="sixth_product"> Filter Catridges <i class="fas fa-angle-right" id="productsixthangle"></i></li>
+        <li  id="seven_product">  POU Water Systems <i class="fas fa-angle-right" id="productsevenangle"></i></li>
+        <li  id="eight_product"> Closed Loop Wastewater Systems <i class="fas fa-angle-right" id="producteightangle"></i></li>
+        <li  id="nine_product"> Testing Kits <i class="fas fa-angle-right" id="productnineangle"></i></li>
+        <li id="ten_product"> Restore Resin Cleaner <i class="fas fa-angle-right"id="producttenangle"></i></li>
+
+        </div>
+    
+    <div id="cta_dropdown" class="mga_down">
+      <p>
+                All Services
+              </p>
+                <li>Lab Services <i class="fas fa-angle-right"></i></li>
+                <li>Resin Regeneration <i class="fas fa-angle-right"></i></li>
+                <li>RO Membrane Restoration <i class="fas fa-angle-right"></i></li>
+          <li>Technical Consulting <i class="fas fa-angle-right"></i></li>
+      <li>Custom Product Solutions <i class="fas fa-angle-right"></i></li>
+      <li>White Labeled Solutions <i class="fas fa-angle-right"></i></li>
+      
+        </div>
+      <div id="ctamenufirst_dropdown" class="application_down">
+        <p>
+                All Applications
+              </p>
+                <li>Municipal Water <i class="fas fa-angle-right"></i></li>
+                <li>Residential & Commercial Water <i class="fas fa-angle-right"></i></li>
+                <li>Groud Water & Waste Water <i class="fas fa-angle-right"></i></li>
+                 <li>Power Generation <i class="fas fa-angle-right"></i></li>             
+        <li> Industrial Water <i class="fas fa-angle-right"></i></li>     
+        <li>Spot-Free Rinse <i class="fas fa-angle-right"></i></li>  
+        <li>Ultrapure Water <i class="fas fa-angle-right"></i></li>
+        <li>Aquarium & Aquaculture <i class="fas fa-angle-right"></i></li>
+        </div>
+      <div id="ctamenusecond_dropdown" class="resources_down">
+        <p>
+                All Resources
+              </p>
+                <li>Document Library <i class="fas fa-angle-right"></i></li>
+                <li>Tools & Calculator <i class="fas fa-angle-right"></i></li>
+                <li>Product Finder</li>
+        <li>Product Catalog</li>
+          
+        </div>
+            <div id="ctamenusupport_dropdown" class="support_down">
+              <p>
+                Support
+              </p>
+                <li>Ask an Expert <i class="fas fa-angle-right"></i></li>
+                <li>Purchase Product <i class="fas fa-angle-right"></i></li>
+                <li>Check Order Status</li>
+          
+        </div>
+            <div id="ctamenucompany_dropdown" class="company_down">
+              <p>
+                Company
+              </p>
+                <li>Company <i class="fas fa-angle-right"></i></li>
+                <li>News &  Events <i class="fas fa-angle-right"></i></li>
+                <li>Certifications & licenses</li>
+        <li>Contact</li>
+
+          
+        </div>
+      </div>
+    </div>
+    </div>
+    <?php
+              // Site title or logo.
+              twentytwenty_site_logo();
+
+              // Site description.
+              twentytwenty_site_description();
+            ?>
+    
+<!--    <div class="custom-search">
+
+      <?php   echo do_shortcode ( ' [ivory-search id="420" title="main"] ' )?>
+      
+    </div> -->
+    </div>
+    </div>
+        <section class="crumb">
+        <div class="container">
+    <div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+<?php
+if(function_exists('bcn_display'))
+{
+bcn_display();
+}?>
+ </div>
+</div>
+</section>
+    <!-----------------------Mobile Header end here------------->

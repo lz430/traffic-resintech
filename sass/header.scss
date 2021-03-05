@@ -1,13 +1,25 @@
 header {
-  transition: .4s all ease;
   z-index: 99999;
+  transition: all .4s;
+  right: 0;
+  left: 0;
+  top: 20px;
+  margin: 0 auto;
+  width: 97% !important;
 
   &.no-scroll {
-    margin: 20px auto;
+
   }
   &.scrolled {
     margin: 0;
-    width: 100%;
+    top: 0;
+    width: 100% !important;
+  }
+
+  .custom-logo {
+    @media screen and (max-width: $tablet) {
+      max-width: none;
+    }
   }
 
   .bg-blue-200 {
@@ -17,30 +29,37 @@ header {
     background: $white;
     padding: 20px; 
   }
+  .search {
+    flex-grow: 1;
+    .custom-search {
+      margin-left: 0;
+      width: auto;
+      padding: 20px;
 
-  .custom-search {
-    margin-left: 0;
-    width: auto;
-    padding: 20px;
+      // form
+      .is-form-style input.is-search-submit, 
+      .is-search-icon{
+        background: transparent;
+        border: 0 none;
+        color: #0D2C6C;
 
-    // form
-    .is-form-style input.is-search-submit, 
-    .is-search-icon{
-      background: transparent;
-      border: 0 none;
-      color: #0D2C6C;
+        @media screen and (max-width: $tablet) {
+          display: none !important; 
+        }
 
-      svg {
-        width: 30px;
+        svg {
+          width: 30px;
+        }
       }
-    }
 
-    .is-search-input {
-      background: transparent; 
-      border: 0 none !important;
-      color: $black !important;
-      font-family: $font-lora;
-      font-size: 1.5em !important;
+      .is-search-input {
+        background: transparent; 
+        border: 0 none !important;
+        color: $black !important;
+        font-family: $font-lora;
+        font-size: 1.5em !important;
+
+      }
     }
   }
 
@@ -50,6 +69,8 @@ header {
 ---------------------------------------------------------------------------------------------------- */
   .cart {
     list-style-type: none; 
+    flex-grow: 0;
+    
     li{
       margin: 0;
       padding: 0;
@@ -92,5 +113,18 @@ header {
       border-radius: 50%;
       padding: 1px;  
     }
+  }
+  .lang {
+    padding-left: 0;
+    max-width: 100px;
+    flex-grow: 0;
+  }
+} //end header
+
+// Mobile search astm-search
+.astm-search-menu-wrapper {
+  @media screen and (max-width: $tablet) {
+    margin-top: 0 !important;
+    z-index: 99999999;
   }
 }

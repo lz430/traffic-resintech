@@ -39,7 +39,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TimelineMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script> -->
 
 		<link rel="profile" href="https://gmpg.org/xfn/11">
     <script src="https://kit.fontawesome.com/185b16c297.js" crossorigin="anonymous"></script>
@@ -56,20 +56,12 @@
 		ul.my_extra_menu_class li > a:not(:last-child):after {
       content: '\f105';
       font-family: FontAwesome;
-      font-weight: bold;
+      font-weight: 300;
       font-style: normal;
       margin:0px 0px 0px 10px;
       text-decoration:none;        
 		}
 
-		ul.my_extra_menu_class li.open > a:not(:last-child):after {
-      content: '\f107';
-      font-family: FontAwesome;
-      font-weight: bold;
-      font-style: normal;
-      margin:0px 0px 0px 10px;
-      text-decoration:none; 
-		}
 	
 	
     @media only screen and (min-width: 600px) {
@@ -77,9 +69,6 @@
     .nav-menu{overflow-y: scroll; overflow-x: hidden;}
     .my_extra_menu_class{margin-left: 0;}
     .menu-main-container{padding: 5px 0 5px 14px; margin: 0;}
-    .peak{position: relative; background: #F9FAFE; width: 25%; padding: 0 5px 10px 0;}
-    .peak img{ padding: 16px 0 15px 27px; max-width: 70%;}
-    .menu-main-container .sub-menu{position: absolute; left: 99%; margin: 0; top: 0; width:100%; border-right: 1px solid #d1d1d1;  border-left: 0px solid #d1d1d1;  height:100%;}
     .menu_right_div{width: 23%; position: absolute; right: 15px; top: 0; border-left: 0px solid #d1d1d1; height:100%}
     #custom-menu .fa-times{position: absolute; left: 22%; top: 17px;}
     ul.my_extra_menu_class li.open > a:not(:last-child):after {margin: 0px 30px 0px 10px;}	
@@ -118,7 +107,49 @@
 	<body <?php body_class(); ?>>
 		<?php wp_body_open(); ?>
 		
-    <header class="container-fluid position-fixed no-scroll p-0">
+    <div class="overlay">
+      <div class="container-fluid show overlay-menu" id="nav">
+        <div class="row">
+          <div class="col-2 bg-white">
+            <div class="row">
+              <div class="col-9 d-flex justify-content-center align-items-center">
+                <?php twentytwenty_site_logo(); ?>
+              </div>
+              <div class="col-2 d-flex justify-content-center align-items-center">
+                <div id="custom-menu" class=""> 
+                  <svg class="close-menu" width="25" height="25" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M15.2265 0.773961C15.3138 0.861046 15.383 0.964501 15.4303 1.0784C15.4776 1.19229 15.5019 1.3144 15.5019 1.43771C15.5019 1.56102 15.4776 1.68313 15.4303 1.79702C15.383 1.91092 15.3138 2.01438 15.2265 2.10146L2.10146 15.2265C1.92542 15.4025 1.68666 15.5014 1.43771 15.5014C1.18875 15.5014 0.949995 15.4025 0.773957 15.2265C0.59792 15.0504 0.499023 14.8117 0.499023 14.5627C0.499023 14.3138 0.59792 14.075 0.773957 13.899L13.899 0.773961C13.986 0.686655 14.0895 0.617387 14.2034 0.570125C14.3173 0.522863 14.4394 0.498535 14.5627 0.498535C14.686 0.498535 14.8081 0.522863 14.922 0.570125C15.0359 0.617387 15.1394 0.686655 15.2265 0.773961Z" fill="#CD163F"/>
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0.773961 0.773961C0.686655 0.861046 0.617387 0.964501 0.570125 1.0784C0.522863 1.19229 0.498535 1.3144 0.498535 1.43771C0.498535 1.56102 0.522863 1.68313 0.570125 1.79702C0.617387 1.91092 0.686655 2.01438 0.773961 2.10146L13.899 15.2265C14.075 15.4025 14.3138 15.5014 14.5627 15.5014C14.8117 15.5014 15.0504 15.4025 15.2265 15.2265C15.4025 15.0504 15.5014 14.8117 15.5014 14.5627C15.5014 14.3138 15.4025 14.075 15.2265 13.899L2.10146 0.773961C2.01438 0.686655 1.91092 0.617387 1.79702 0.570125C1.68313 0.522863 1.56102 0.498535 1.43771 0.498535C1.3144 0.498535 1.19229 0.522863 1.0784 0.570125C0.964501 0.617387 0.861046 0.686655 0.773961 0.773961Z" fill="#CD163F"/>
+                   </svg>
+                </div> <!--end custom-menu -->
+              </div> <!--end col-1 -->
+            </div> <!--end row -->
+          </div><!--end col-3 --> 
+        </div> <!--end row -->
+       
+        <div class="peak">
+          <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'my_extra_menu_class' ) );?>
+          
+          <div class="product-text">
+            <hr>
+            <p>News & Events</p>
+            <p>Careers </p>
+            <p>Locations</p>
+            <p>Contact</p>
+          </div>
+          <div class="socialicons-list">
+            <ul class="social-listing">
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div> <!-- end peak-->
+      </div> <!--end container-fluid -->
+    </div> <!--end overlay -->
+
+    <header class="container-fluid position-fixed no-scroll p-0 d-none d-lg-block">
       <div class="row">
         <div class="col-2 bg-white">
           <div class="row">
@@ -127,57 +158,31 @@
             </div>
             <div class="col-2 d-flex justify-content-center align-items-center">
               <div id="custom-menu" class=""> 
-                <svg id="open" width="28" height="19" viewBox="0 0 28 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="open-menu" width="28" height="19" viewBox="0 0 28 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="28" height="3" rx="1.5" fill="#CD163F"/>
                   <rect y="8" width="28" height="3" rx="1.5" fill="#CD163F"/>
                   <rect y="16" width="28" height="3" rx="1.5" fill="#CD163F"/>
                 </svg>
-
-                <div class="container-fluid nav-menu show" id="nav">
-                  <div class="peak">
-                    <img src="/wp-content/uploads/2020/12/image-26.png">
-                    <ul id="first">
-                      <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'my_extra_menu_class' ) ); ?>
-                    </ul>
-                    <div class="product-text">
-                      <hr>
-                      <p>News & Events</p>
-                      <p>Careers </p>
-                      <p>Locations</p>
-                      <p>Contact</p>
-                    </div>
-                    <div class="socialicons-list">
-                      <ul class="social-listing">
-                    
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                      </ul>
-                    </div>
-                  </div> <!--end peak -->
-                </div> <!--end container-fluid -->
-                </div> <!--end custom-menu -->
+              </div> <!--end custom-menu -->
             </div> <!--end col-1 -->
           </div> <!--end row -->
         </div><!--end col-3 -->
 
-
         <div class="col-10 bg-blue-200">
           <div class="row">
-            <div class="col-10">
+            <div class="col search">
               <!-- Search -->
               <div class="custom-search">
                 <?php   echo do_shortcode ( ' [ivory-search id="420" title="main"] ' )?>
               </div>
             </div>
 
-            <div class="col-1 cart d-flex justify-content-center align-items-center">
+            <div class="col cart d-flex justify-content-center align-items-center">
               <!-- Cart -->
               <?php echo do_shortcode('[woo_cart_but]'); ?>
             </div>
 
-            <div class="col-1 d-flex justify-content-center align-items-center">
+            <div class="col lang d-flex justify-content-center align-items-center">
               <!-- Language selector -->
               <div class="lang-cart">
                 <?php   echo do_shortcode( ' [language-switcher] ' ); ?>      
@@ -186,138 +191,35 @@
             
           </div>
         </div>
-
+      </div>
     </header>
 
+    <!-- mobile header -->
+    <header class="container-fluid position-fixed no-scroll p-0 d-lg-none bg-white">
+      <div class="row">
+        <div class="col-3 d-flex justify-content-center align-items-center">
+            <div id="custom-menu" class=""> 
+              <svg class="open-menu" width="28" height="19" viewBox="0 0 28 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="28" height="3" rx="1.5" fill="#CD163F"/>
+                <rect y="8" width="28" height="3" rx="1.5" fill="#CD163F"/>
+                <rect y="16" width="28" height="3" rx="1.5" fill="#CD163F"/>
+              </svg>
+            </div> <!--end custom-menu -->
+        </div>
+        <div class="col-6">
+          <?php twentytwenty_site_logo(); ?>
+        </div>
+        <div class="col-3 search">
+          <div class="custom-search">
+            <?php   echo do_shortcode ( ' [ivory-search id="420" title="main"] ' )?>
+          </div>
+        </div>
+      
+      </div>
+    </header>
 
-    
-<!-----------------------Mobile Header start here------------->
-		<div class="mb-header">
-			<div class="custom-header container-fluid">
-	<div class="header-titles">
-		<div id="custom-menu"> 
-          <i class="fa fa-bars open" id="open" aria-hidden="true"></i>
-        <i class="fas fa-times" id="close"></i>
-        <div class="container-fluid nav-menu show" id="nav">
-			
-            <div class="col-3 peak">
-				<img src="/wp-content/uploads/2020/12/image-26.png">
-            <ul id="first">
-                <li id="home_drop">
-					Products<i class="fas fa-angle-right" id="istangle"></i></li> 
-                <li id="second_drop">Services <i class="fas fa-angle-right"></i></li>
-                <li id="third_drop">Applications <i class="fas fa-angle-right"></i></li>
-                <li id="fourth_drop">Resources <i class="fas fa-angle-right"></i></li>
-                <li id="fifth_drop">Support <i class="fas fa-angle-right"></i></li>
-				<li id="sixth_drop">Comapany <i class="fas fa-angle-right"></i></li>
-				
-            </ul>
-				
-            </div>
-            <div id="home_dropdown" class="drop_down">
-				<p>
-					All Products
-				</p>
-                <li id="first_product">Ion Exchange Resins <i class="fas fa-angle-right" id="productoneangle"></i></li>
-                <li  id="second_product">Granular Activated Carbon <i class="fas fa-angle-right" id="producttwoangle"></i></li>
-                <li  id="third_product"> Specialty Media <i class="fas fa-angle-right" id="productthirdangle"></i></li>
-          <li  id="fourth_product"> Specialty Media <i class="fas fa-angle-right" id="productfourthangle"></i></li>
-				<li  id="fifth_product"> Specialty Media <i class="fas fa-angle-right" id="productfifthangle"></i></li>
-				<li  id="sixth_product"> Filter Catridges <i class="fas fa-angle-right" id="productsixthangle"></i></li>
-				<li  id="seven_product">  POU Water Systems <i class="fas fa-angle-right" id="productsevenangle"></i></li>
-				<li  id="eight_product"> Closed Loop Wastewater Systems <i class="fas fa-angle-right" id="producteightangle"></i></li>
-				<li  id="nine_product"> Testing Kits <i class="fas fa-angle-right" id="productnineangle"></i></li>
- 				<li id="ten_product"> Restore Resin Cleaner <i class="fas fa-angle-right"id="producttenangle"></i></li>
-
-        </div>
-		
-		<div id="cta_dropdown" class="mga_down">
-			<p>
-								All Services
-							</p>
-                <li>Lab Services <i class="fas fa-angle-right"></i></li>
-                <li>Resin Regeneration <i class="fas fa-angle-right"></i></li>
-                <li>RO Membrane Restoration <i class="fas fa-angle-right"></i></li>
-          <li>Technical Consulting <i class="fas fa-angle-right"></i></li>
-			<li>Custom Product Solutions <i class="fas fa-angle-right"></i></li>
-			<li>White Labeled Solutions <i class="fas fa-angle-right"></i></li>
-			
-        </div>
-			<div id="ctamenufirst_dropdown" class="application_down">
-				<p>
-								All Applications
-							</p>
-                <li>Municipal Water <i class="fas fa-angle-right"></i></li>
-                <li>Residential & Commercial Water <i class="fas fa-angle-right"></i></li>
-                <li>Groud Water & Waste Water <i class="fas fa-angle-right"></i></li>
-                 <li>Power Generation <i class="fas fa-angle-right"></i></li>             
-				<li> Industrial Water <i class="fas fa-angle-right"></i></li>     
-				<li>Spot-Free Rinse <i class="fas fa-angle-right"></i></li>  
-				<li>Ultrapure Water <i class="fas fa-angle-right"></i></li>
-				<li>Aquarium & Aquaculture <i class="fas fa-angle-right"></i></li>
-        </div>
-			<div id="ctamenusecond_dropdown" class="resources_down">
-				<p>
-								All Resources
-							</p>
-                <li>Document Library <i class="fas fa-angle-right"></i></li>
-                <li>Tools & Calculator <i class="fas fa-angle-right"></i></li>
-                <li>Product Finder</li>
-				<li>Product Catalog</li>
-          
-        </div>
-						<div id="ctamenusupport_dropdown" class="support_down">
-							<p>
-								Support
-							</p>
-                <li>Ask an Expert <i class="fas fa-angle-right"></i></li>
-                <li>Purchase Product <i class="fas fa-angle-right"></i></li>
-                <li>Check Order Status</li>
-          
-        </div>
-						<div id="ctamenucompany_dropdown" class="company_down">
-							<p>
-								Company
-							</p>
-                <li>Company <i class="fas fa-angle-right"></i></li>
-                <li>News & 	Events <i class="fas fa-angle-right"></i></li>
-                <li>Certifications & licenses</li>
-				<li>Contact</li>
-
-          
-        </div>
-			</div>
-    </div>
-		</div>
-		<?php
-							// Site title or logo.
-							twentytwenty_site_logo();
-
-							// Site description.
-							twentytwenty_site_description();
-						?>
-		
-<!-- 		<div class="custom-search">
-
-			<?php 	echo do_shortcode ( ' [ivory-search id="420" title="main"] ' )?>
-			
-		</div> -->
-		</div>
-		</div>
-        <section class="crumb">
-        <div class="container">
-		<div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
 <?php
-if(function_exists('bcn_display'))
-{
-bcn_display();
-}?>
- </div>
-</div>
-</section>
-		<!-----------------------Mobile Header end here------------->
-		<?php
-		// Output the menu modal.
-		get_template_part( 'template-parts/modal-menu' );
-		
+  // Output the menu modal.
+  get_template_part( 'template-parts/modal-menu' );
+?>
 

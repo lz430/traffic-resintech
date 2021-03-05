@@ -376,11 +376,11 @@ img.d-block.w-100 {
 	height: 770px;
 }
 
-.carousel {
+/*.carousel {
 	margin-top: -169px;
 	position: relative;
 	margin-right: 25px;
-}
+}*/
 section.sub-footer p {
     padding-top: 23px;
     font-size: 14px;
@@ -2911,7 +2911,7 @@ a.view-more-btn-ne:hover::after {
 	.col-md-6.vga h6 a {
 		color: #111315;
 	}
-	.line {
+	/*.line {
 		position: relative;
 		width: 131px;
 		height: 2px;
@@ -2930,7 +2930,7 @@ a.view-more-btn-ne:hover::after {
 	}
 	.line:hover::before {
 		animation: animatetwo 2s ease-in-out;
-	}
+	}*/
 	@keyframes animatetwo {
 		0% {
 			left: -300px;
