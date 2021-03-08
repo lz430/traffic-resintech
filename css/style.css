@@ -117,6 +117,14 @@ a.line::before {
     opacity: 1;
   }
 }
+@keyframes shrink {
+  0% {
+    background-size: 110% 110%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
 header {
   z-index: 99999;
   transition: 0.4s all ease-in-out;
@@ -315,6 +323,12 @@ header .lang {
   background-repeat: no-repeat;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  animation: shrink 2s;
+}
+.home .carousel-item.active {
+  opacity: 1;
+  animation: shrink 2s;
 }
 .home .carousel-item .d-flex {
   flex-wrap: wrap;

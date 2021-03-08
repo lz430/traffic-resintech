@@ -8,6 +8,13 @@
         background-repeat: no-repeat;
         align-items: center;
         justify-content: center;
+        opacity: 0;
+        animation: shrink 2s;
+
+        &.active {
+          opacity: 1;
+          animation: shrink 2s;
+        }
 
         .d-flex {
           flex-wrap: wrap;
