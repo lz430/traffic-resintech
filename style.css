@@ -1482,7 +1482,7 @@ p.news {
 	margin-top: -234px;
 }
 
-.row.kth {
+.row > .kth {
 	position: relative;
 	z-index: 1;
 }
@@ -1517,10 +1517,10 @@ p.text-space {
 	margin-left: -14px;
 }
 
-section.services {
+/*section.services {
 	margin-top: 65px;
 	margin-bottom: 70px;
-}
+}*/
 
 section.cbx {
 	margin-top: 85px;
@@ -1594,7 +1594,7 @@ section.cbx img {
 }
 
 section.blog {
-	background-image: url('../wp-content/uploads/020/12/Ellipse-33-1.png');
+	background-image: url('/wp-content/uploads/020/12/Ellipse-33-1.png');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -2911,50 +2911,11 @@ a.view-more-btn-ne:hover::after {
 	.col-md-6.vga h6 a {
 		color: #111315;
 	}
-	/*.line {
-		position: relative;
-		width: 131px;
-		height: 2px;
-		background: #cc163f;
-		margin-top: 30px;
-	}
-	.line::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		background: #fff;
-		width: 0;
-		height: 0px;
-		opacity: 0;
-	}
-	.line:hover::before {
-		animation: animatetwo 2s ease-in-out;
-	}*/
-	@keyframes animatetwo {
-		0% {
-			left: -300px;
-			width: 80%;
-			height: 5px;
-			opacity: 1;
-		}
-		50% {
-			left: 200px;
-			width: 80%;
-			height: 5px;
-			opacity: 1;
-		}
-		100% {
-			width: 0;
-			height: 0px;
-			left: 0;
-			opacity: 0;
-		}
-	}
+	
 	.col-md-6.company {
 		overflow: hidden;
 	}
-	.line-company {
+	/*.line-company {
 		position: relative;
 		width: 131px;
 		height: 2px;
@@ -2993,7 +2954,7 @@ a.view-more-btn-ne:hover::after {
 			left: 0;
 			opacity: 0;
 		}
-	}
+	}*/
 	.line-cga {
 		position: relative;
 		width: 113px;

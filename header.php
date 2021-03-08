@@ -35,7 +35,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
 
     <script type="text/javascript" src="https://www.bugherd.com/sidebarv2.js?apikey=dp46ucdledpfc9xxfkqnqq" async="true"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenLite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TimelineMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
@@ -197,7 +196,7 @@
     <!-- mobile header -->
     <header class="container-fluid position-fixed no-scroll p-0 d-lg-none bg-white">
       <div class="row">
-        <div class="col-3 d-flex justify-content-center align-items-center">
+        <div class="col-2 d-flex justify-content-center align-items-center">
             <div id="custom-menu" class=""> 
               <svg class="open-menu" width="28" height="19" viewBox="0 0 28 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="28" height="3" rx="1.5" fill="#CD163F"/>
@@ -206,10 +205,10 @@
               </svg>
             </div> <!--end custom-menu -->
         </div>
-        <div class="col-6">
+        <div class="col-8 d-flex justify-content-center align-items-center">
           <?php twentytwenty_site_logo(); ?>
         </div>
-        <div class="col-3 search">
+        <div class="col-2 search">
           <div class="custom-search">
             <?php   echo do_shortcode ( ' [ivory-search id="420" title="main"] ' )?>
           </div>

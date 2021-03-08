@@ -1,16 +1,14 @@
 header {
   z-index: 99999;
-  transition: all .4s;
+  transition: .4s all ease-in-out;
   right: 0;
   left: 0;
   top: 20px;
   margin: 0 auto;
   width: 97% !important;
 
-  &.no-scroll {
-
-  }
   &.scrolled {
+    transition: .4s all ease-in-out;
     margin: 0;
     top: 0;
     width: 100% !important;
@@ -31,6 +29,7 @@ header {
   }
   .search {
     flex-grow: 1;
+    
     .custom-search {
       margin-left: 0;
       width: auto;
@@ -124,7 +123,12 @@ header {
 // Mobile search astm-search
 .astm-search-menu-wrapper {
   @media screen and (max-width: $tablet) {
+    position: sticky;
     margin-top: 0 !important;
     z-index: 99999999;
+
+    span.astm-search-menu {
+      padding: 0;
+    }
   }
 }

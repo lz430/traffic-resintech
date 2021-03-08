@@ -38,11 +38,11 @@
                                 ?>
                                 
                                  <div class="carousel-item d-flex min-vh-100 <?php if($i == 1) echo 'active';?>" style="background-image: url('<?php echo $background_image; ?>')">
-                                    <div class="d-flex">
-                                        <h1><?php echo $headline; ?></h1>
-                                        <h3><?php echo $subheading; ?></h3> 
-                                        <a class="line-slide" href="<?php echo $link_url; ?>"><?php echo $link_text; ?></a>
-                                    </div>
+                                    <div class="d-flex justify-content-start">
+                                        <h1 class="col-12 animate__animated animate__fadeInUp"><?php echo $headline; ?></h1>
+                                        <h3 class="col-12 animate__animated animate__fadeInUp"><?php echo $subheading; ?></h3> 
+                                        <a class="col-12 line animate__animated animate__fadeInUp" href="<?php echo $link_url; ?>"><?php echo $link_text; ?></a>
+                                    </div> 
                                 </div>
                                               
                                 <?php   $i++; // Increment the increment variable
@@ -74,14 +74,8 @@
            </div>
         </section>
 
-
-
-
-
-
-
         <!-- Company Section start here-->
-        <section class="company-section">
+        <section class="company-section container-fluid">
             <div class="row">
                 <div class="col-md-6">
                     <div class="bg-img">
@@ -106,7 +100,7 @@
                     </h5>
                         <?php echo $our_story_section['details'];?>
                    
-                    <div class="line">
+                    <div class="line-slide">
                         <h6>
                             <a href="<?php echo $our_story_section['link']['url'];?>"><?php echo $our_story_section['link']['title'];?></a>
                         </h6>
@@ -117,185 +111,156 @@
             </div>
         </section> 
         <!-- Company Section end here-->
-        <!-- <div class="test">hi tesetr</div>
-        <h2>Scroll down</h2>
-        <h1>This will jump</h1> -->
+       
         <!-- Services Section start here-->
-
-
-       <!--  <section class="services ">
-            <div class="container">
-                <p class="text-space">Services</p>
-                <h2>
-                <?php echo $service_section_heading;?>
-                </h2>
-                <div class="row animate-img">
-                    <?php
-                                            $args = array(
-                                            'post_type' => 'services',
-                                            'post_status' => 'publish',
-                                            'posts_per_page' => 9,
-                                            'order' => 'DESC',
-                                            
-                                                                    );
-                                            $posts = new WP_Query( $args );
-                                                while ( $posts->have_posts() ) : $posts->the_post();
-                    ?>
-                    <div class="col-md-4 svc">
-                        <div class="porta=-animate" data-aos="fade-up"
-                            data-aos-offset="100"
-                            data-aos-delay="15"
-                            data-aos-duration="1000"
-                            data-aos-easing="ease-in-out"
-                            data-aos-mirror="true"
-                            data-aos-once="true"
-                            data-aos-anchor-placement="top-center">
-                            <div class="get-img">
-                                <img src="<?php echo get_the_post_thumbnail_url(get_the_ID() );?>">
+        <section class="services container">
+            <div class="row">
+                <div class="col">
+                    <p class="text-space">Services</p>
+                    <h2><?php echo $service_section_heading;?></h2>
+                    <div class="row animate-img">
+                        <?php
+                            $args = array(
+                            'post_type' => 'services',
+                            'post_status' => 'publish',
+                            'posts_per_page' => 9,
+                            'order' => 'DESC',
+                            
+                                                    );
+                            $posts = new WP_Query( $args );
+                                while ( $posts->have_posts() ) : $posts->the_post();
+                        ?>
+                        <div class="col-md-4 svc">
+                            <div class="porta=-animate" data-aos="fade-up"
+                                data-aos-offset="100"
+                                data-aos-delay="15"
+                                data-aos-duration="1000"
+                                data-aos-easing="ease-in-out"
+                                data-aos-mirror="true"
+                                data-aos-once="true"
+                                data-aos-anchor-placement="top-center">
+                                <div class="get-img">
+                                    <img src="<?php echo get_the_post_thumbnail_url(get_the_ID() );?>">
+                                </div>
+                                <a href="<?php echo the_permalink(get_the_ID());?>"> <h5><?php the_title(); ?></h5></a>
+                                <P><?php the_content(); ?></P>
                             </div>
-                            <a href="<?php echo the_permalink(get_the_ID());?>"> <h5><?php the_title(); ?></h5></a>
-                            <P><?php the_content(); ?></P>
                         </div>
-                    </div>
-                    <?php
-                                    endwhile;
-                                    wp_reset_postdata();
-                    ?>
-                </div>
-            </div>
-        </section> -->
-
-
-        <!-- Services Section end here-->
-        <!-- Services Duplicate Section start here-->
-        <!-- <section class="services">
-            <div class="container">
-                        <div class="row animate-imgone">
-                                    
-                    <div class="col-md-4">
-                        <img src="/wp-content/uploads/2020/12/Rectangle-99.png">
-                        <h5>Technical Consulting</h5>
-                        <P>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</P>
-                    </div>
-                    <div class="col-md-4">
-                        <img src="/wp-content/uploads/2020/12/Rectangle-99-3.png">
-                        <h5>Custom Product Engineering</h5>
-                        <P>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</P>
-                    </div>
-                    <div class="col-md-4">
-                        <img src="/wp-content/uploads/2020/12/Rectangle-99-4.png">
-                        <h5>Private Labeling</h5>
-                        <P>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</P>
+                        <?php
+                                        endwhile;
+                                        wp_reset_postdata();
+                        ?>
                     </div>
                 </div>
             </div>
+        </section>
+
+
+        <!-- Blog Section start here-->
+        <section class="blog container-fluid" ata-aos="fade-up"
+            data-aos-offset="100"
+            data-aos-delay="20"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+            data-aos-mirror="true"
+            data-aos-once="true"
+            data-aos-anchor-placement="top-center">
+            <div class="row">
+                <div class="d-flex flex-row-reverse">
+                    <div class="col-md-6 bg-blue-900">    
+                        <h6>News</h6>
+                        <h4><?php echo $news_section['heading'];?></h4>
+                    </div>
                 </div>
-    </section> -->
-    <!-- Services Duplicate Section end here-->
-    <!-- Blog Section start here-->
-    <section class="blog" ata-aos="fade-up"
-        data-aos-offset="100"
-        data-aos-delay="20"
-        data-aos-duration="1000"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="true"
-        data-aos-anchor-placement="top-center">
-        <div class="container-fluid">
-            <div class="row kth">
-                <div class="col-md-6">
-                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"></div>
                 <div class="col-md-6">
                     <div class="site-bg">
-                        <h6>
-                        News
-                        </h6>
-                        <h4 id="happ">
-                        <?php echo $news_section['heading'];?>
-                        </h4>
+                        
                         <div class="newsall">
                             <div class="fromNews"></div>
-                            <a href="<?php echo $news_section['link']['url'];?>">
-                                <p><?php echo $news_section['link']['title'];?>
-                                </p>
-                            </a>
+                            <div class="line-slide">
+                                <h6>
+                                    <a href="<?php echo $news_section['link']['url'];?>"><?php echo $news_section['link']['title'];?></a>
+                                </h6>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row kite">
-                <div class="col-md-6 meta">
-                    <div id="animate" data-aos="slide-right"
-                        data-aos-offset="70"
-                        data-aos-delay="50"
-                        data-aos-duration="2000"
-                        data-aos-easing="ease-in-out"
-                        data-aos-mirror="true"
-                        data-aos-once="true"
-                        data-aos-anchor-placement="top-center">
-                        
-                    </div>
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <?php foreach ($news_section['slider'] as $key => $value): ?>
-                                <div class="carousel-item active">
-                                    <img class="d-block w-100" src="<?php echo $value['image'];?>" alt="First slide">
-                                </div>
-                            <?php endforeach ?>
-                            
-                            <!-- <div class="carousel-item">
-                                <img class="d-block w-100" src="/wp-content/uploads/2020/12/Rectangle-95-5.png" alt="Second slide">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-100" src="/wp-content/uploads/2021/02/Rectangle-95-7.png" alt="Third slide">
-                            </div> -->
-                        </div>
-                        <div id="nown" data-aos="slide-right"
-                            data-aos-offset="100"
+                <div class="row kite">
+                    <div class="col-md-6 meta">
+                        <div id="animate" data-aos="slide-right"
+                            data-aos-offset="70"
                             data-aos-delay="50"
                             data-aos-duration="2000"
                             data-aos-easing="ease-in-out"
                             data-aos-mirror="true"
                             data-aos-once="true"
-                        data-aos-anchor-placement="top-center"></div>
-                        
+                            data-aos-anchor-placement="top-center">
+                            
+                        </div>
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <?php foreach ($news_section['slider'] as $key => $value): ?>
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="<?php echo $value['image'];?>" alt="First slide">
+                                    </div>
+                                <?php endforeach ?>
+                                
+                                <!-- <div class="carousel-item">
+                                    <img class="d-block w-100" src="/wp-content/uploads/2020/12/Rectangle-95-5.png" alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="/wp-content/uploads/2021/02/Rectangle-95-7.png" alt="Third slide">
+                                </div> -->
+                            </div>
+                            <div id="nown" data-aos="slide-right"
+                                data-aos-offset="100"
+                                data-aos-delay="50"
+                                data-aos-duration="2000"
+                                data-aos-easing="ease-in-out"
+                                data-aos-mirror="true"
+                                data-aos-once="true"
+                            data-aos-anchor-placement="top-center"></div>
+                            
+                        </div>
+                        <!--  <img src="/wp-content/uploads/2021/02/Rectangle-95-7.png"> -->
+                        <!--<div class="home-cirlce">-->
+                        <!--</div>-->
+                        <!--  <div id="animate"></div>
+                        <div id="nown"></div> -->
                     </div>
-                    <!--  <img src="/wp-content/uploads/2021/02/Rectangle-95-7.png"> -->
-                    <!--<div class="home-cirlce">-->
-                    <!--</div>-->
-                    <!--  <div id="animate"></div>
-                    <div id="nown"></div> -->
-                </div>
-                <div class="col-md-6 posts">
-                    <?php
-                                        $args = array(
-                                'post_type' => 'news',
-                                        'post_status' => 'publish',
-                                        'posts_per_page' => 3,
-                                'order' => 'ASC',
-                                );
-                                $posts = new WP_Query( $args );
-                                        while ( $posts->have_posts() ) : $posts->the_post();
-                    ?>
-                    <div class="home-post">
-                        <span><?php echo get_the_date( 'd.m.y', get_the_ID() ); ?> |
-                        <?php echo get_the_category(get_the_ID())[0]->name; ?></span>
-                        <a href="<?php the_permalink() ?>">
-                            <h5><?php the_title(); ?></h5>
-                        </a>
-                        <p>
-                            <?php the_content(); ?>
-                        </p>
-                        <hr class="post-line">
+                    <div class="col-md-6 posts">
+                        <?php
+                                            $args = array(
+                                    'post_type' => 'news',
+                                            'post_status' => 'publish',
+                                            'posts_per_page' => 3,
+                                    'order' => 'ASC',
+                                    );
+                                    $posts = new WP_Query( $args );
+                                            while ( $posts->have_posts() ) : $posts->the_post();
+                        ?>
+                        <div class="home-post">
+                            <span><?php echo get_the_date( 'd.m.y', get_the_ID() ); ?> |
+                            <?php echo get_the_category(get_the_ID())[0]->name; ?></span>
+                            <a href="<?php the_permalink() ?>">
+                                <h5><?php the_title(); ?></h5>
+                            </a>
+                            <p>
+                                <?php the_content(); ?>
+                            </p>
+                            <hr class="post-line">
+                        </div>
+                        <?php
+                                            endwhile;
+                                        wp_reset_postdata();
+                        ?>
                     </div>
-                    <?php
-                                        endwhile;
-                                    wp_reset_postdata();
-                    ?>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     <!-- Blog Section end here-->
     <!-- Tools and Calculator Section start here-->
     <section class="cbx" ata-aos="fade-up"
